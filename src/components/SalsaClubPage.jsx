@@ -136,7 +136,7 @@ const SalsaClubPage = () => {
       icon: <Truck className="h-7 w-7 text-primary" />, title: 'Convenient Delivery', desc: 'Get your favorite salsas delivered right to your door on a schedule that works for you.'
     },
     {
-      icon: <Star className="h-7 w-7 text-primary" />, title: 'Premium Quality', desc: 'Every salsa is handcrafted with premium ingredients and authentic recipes.'
+      icon: <Star className="h-7 w-7 text-primary" />, title: 'Premium Quality', desc: 'Every salsa is crafted with premium ingredients and authentic recipes.'
     },
     {
       icon: <Clock className="h-7 w-7 text-primary" />, title: 'Flexible Plans', desc: 'Choose from bi-weekly or monthly deliveries and cancel anytime with no commitment.'
