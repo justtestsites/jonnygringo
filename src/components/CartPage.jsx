@@ -16,7 +16,7 @@ const CartPage = ({ cart, onAddToCart, onRemoveFromCart }) => {
     .map(productId => {
       const product = products.find(p => p.id === productId);
       if (product && cart[productId] > 0) {
-        return { id: product.id, quantity: cart[productId], price: product.price };
+        return { ...product, quantity: cart[productId] };
       }
       return null;
     })
@@ -94,7 +94,6 @@ const CartPage = ({ cart, onAddToCart, onRemoveFromCart }) => {
                 <div className="flex-1 w-full flex flex-col md:flex-row items-center md:items-start justify-between gap-6 px-6 py-4">
                   <div className="flex-1 min-w-0 w-full">
                     <h2 className="text-xl font-semibold text-primary mb-2">{item.name}</h2>
-                    <p className="text-muted-foreground mb-3">${item.price}</p>
                     <div className="flex items-center space-x-3 mt-2">
                       <Button variant="outline" size="icon" onClick={() => onRemoveFromCart(item.id, 1)} className="h-8 w-8">
                         -
