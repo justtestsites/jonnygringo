@@ -418,7 +418,7 @@ const ProductsSection = React.forwardRef((props, ref) => {
             Our Salsa Gallery
             <div className="mx-auto mt-2 w-32 h-1 bg-primary rounded-full" />
           </h2>
-          <p className="text-center text-lg text-gray-700 mb-8">Take a closer look at our handcrafted salsas, made with love and the finest ingredients</p>
+          <p className="text-center text-lg text-gray-700 mb-8">Take a closer look at our crafted salsas, made with love and the finest ingredients</p>
           <div className="flex flex-col md:flex-row gap-8 justify-center items-stretch max-w-4xl mx-auto">
             <img src={Salsa1} alt="Salsa 1" className="rounded-xl shadow-lg object-cover w-full md:w-1/3 h-64 transition-transform duration-200 hover:scale-105 hover:shadow-2xl cursor-pointer" />
             <img src={Salsa2} alt="Salsa 2" className="rounded-xl shadow-lg object-cover w-full md:w-1/3 h-64 transition-transform duration-200 hover:scale-105 hover:shadow-2xl cursor-pointer" />
