@@ -27,8 +27,7 @@ const CartPage = ({ cart, onAddToCart, onRemoveFromCart }) => {
   }, 0);
 
   // For demo, flat shipping (could be dynamic)
-  const shipping = cartItemsDetails.length > 0 ? 10 : 0;
-  const total = subtotal + shipping;
+  const total = subtotal;
 
   const handleCheckout = async () => {
     if (cartItemsDetails.length === 0) {
