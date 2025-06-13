@@ -162,22 +162,6 @@ const SalsaClubPage = () => {
     }
   ]
 
-  // FAQ items
-  const faqs = [
-    {
-      q: 'How does the subscription work?',
-      a: `Choose your preferred plan and delivery frequency. We'll automatically send your selected salsas on schedule. You can modify, pause, or cancel your subscription anytime.`
-    },
-    {
-      q: 'Can I change my plan?',
-      a: `Yes! You can upgrade, downgrade, or switch between plans at any time. Changes will take effect with your next delivery.`
-    },
-    {
-      q: 'What if I want to skip a delivery?',
-      a: `You can easily skip any delivery through your account dashboard. Just let us know at least 3 days before your next scheduled delivery.`
-    }
-  ]
-
   const priceIdMap = {
     'mix-match-biweekly': import.meta.env.VITE_STRIPE_PRICE_ID_MIX_MATCH_BIWEEKLY,
     'mild-spicy-monthly': import.meta.env.VITE_STRIPE_PRICE_ID_MILD_SPICY_MONTHLY,
@@ -359,23 +343,6 @@ const SalsaClubPage = () => {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="max-w-4xl mx-auto px-4 py-12">
-        <h2 className="text-3xl font-bold text-center text-primary mb-8">Frequently Asked Questions</h2>
-        <Accordion type="single" collapsible className="space-y-4">
-          {faqs.map((faq, idx) => (
-            <AccordionItem key={idx} value={`faq-${idx}`} className="bg-white rounded-xl shadow-lg border border-primary/10">
-              <AccordionTrigger className="text-lg px-6 py-4 font-semibold flex items-center w-full text-primary">
-                {faq.q}
-              </AccordionTrigger>
-              <AccordionContent className="px-6 pb-4 text-muted-foreground text-base">
-                {faq.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
       </section>
     </div>
   )
