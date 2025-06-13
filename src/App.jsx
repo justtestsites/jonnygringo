@@ -13,6 +13,9 @@ import salsa2 from './assets/gallery/salsa2.jpg'
 import salsa3 from './assets/gallery/salsa3.jpg'
 import mildSalsaWebp from './assets/gallery/mild-salsa.webp'
 import spicySalsaWebp from './assets/gallery/spicy-salsa.webp'
+import Salsa1 from './assets/gallery/Salsa1.jpg'
+import Salsa2 from './assets/gallery/Salsa2.jpg'
+import Salsa3 from './assets/gallery/Salsa3.jpg'
 
 export const products = [
   {
