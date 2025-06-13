@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation 
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
-import { ShoppingCart, Menu, X, Instagram, Mail, Phone, MapPin, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ShoppingCart, Menu, X, Instagram, Mail, Phone, MapPin, ChevronLeft, ChevronRight, Truck, Flame, UserCheck } from 'lucide-react'
 import SalsaClubPage from './components/SalsaClubPage.jsx'
 import CartPage from './components/CartPage.jsx'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage.jsx'
@@ -43,7 +43,6 @@ const customerReviews = [
   { stars: 5, text: 'The Salsa Club subscription is a game changer. Fresh salsa delivered to my door every month—love it!', name: 'Samantha T.' },
   { stars: 5, text: 'I brought Jonny Gringo salsa to a party and everyone asked where I got it. The spicy one is my favorite!', name: 'Carlos V.' },
   { stars: 5, text: 'I appreciate the all-natural ingredients. The flavor is so fresh and vibrant. Highly recommend!', name: 'Priya S.' },
-  { stars: 5, text: "The guacamole is the best I've had from a store. Pairs perfectly with the mild salsa.", name: 'Ashley L.' },
   { stars: 5, text: 'I love the variety in the Salsa Club. Every delivery is a treat and the quality is always top notch.', name: 'Ben W.' }
 ];
 
@@ -272,8 +271,26 @@ const ProductCard = ({ id, name, description, heatLevel, price, image, onAddToCa
 // Products Section Component
 const ProductsSection = React.forwardRef((props, ref) => {
   const { cart, onAddToCart, onRemoveFromCart } = props;
-  const reviewsToShow = 3;
   const numReviews = customerReviews.length;
+
+  const [reviewsToShow, setReviewsToShow] = useState(3); // Default for desktop
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) { // md breakpoint for Tailwind
+        setReviewsToShow(1);
+      } else if (window.innerWidth < 1024) { // lg breakpoint for Tailwind
+        setReviewsToShow(2);
+      } else {
+        setReviewsToShow(3);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Call once on mount to set initial value
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const carouselTrack = React.useMemo(() => {
     if (numReviews === 0) {
@@ -452,22 +469,18 @@ const ProductsSection = React.forwardRef((props, ref) => {
             <div className="w-full max-w-6xl mx-auto overflow-hidden">
               <div
                 ref={carouselRef}
-                className="flex transition-transform duration-500 ease-in-out gap-8"
+                className="flex transition-transform duration-500"
                 style={{ transform: transformValue }}
               >
-                {carouselTrack.map((review, idx) => (
-                  <div key={idx} className="flex-shrink-0 w-1/3">
-                    {review ? (
-                      <div className="rounded-xl shadow p-8 bg-white border border-gray-100 flex flex-col items-start h-full">
+                {carouselTrack.map((review, index) => (
+                  <div key={index} className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
+                    <Card className="jonny-card h-full flex flex-col justify-between p-6 shadow-lg border border-primary/10 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
+                      <div className="flex items-center mb-4">
                         <div className="flex mb-2 text-yellow-400 text-xl">{'★★★★★'.slice(0, review.stars)}</div>
-                        <p className="text-gray-700 font-medium mb-4">"{review.text}"</p>
-                        <span className="font-bold text-black">{review.name}</span>
                       </div>
-                    ) : (
-                      <div className="rounded-xl shadow p-8 bg-white border border-gray-100 flex flex-col items-center justify-center h-full text-gray-300">
-                        <p>Empty Slot</p>
-                      </div>
-                    )}
+                      <p className="text-gray-700 font-medium mb-4">"{review.text}"</p>
+                      <span className="font-bold text-black">{review.name}</span>
+                    </Card>
                   </div>
                 ))}
               </div>
