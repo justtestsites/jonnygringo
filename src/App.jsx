@@ -131,6 +131,14 @@ const Navigation = ({ cartItems }) => {
               >
                 Contact
               </Link>
+              <Link
+                to="/cart"
+                className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-black flex items-center"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <ShoppingCart className="h-5 w-5 mr-2" />
+                Cart ({cartItems})
+              </Link>
             </div>
           </div>
         )}
