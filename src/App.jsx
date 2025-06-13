@@ -542,14 +542,8 @@ const Footer = () => {
           <div>
             <h4 className="font-bold text-lg mb-4 text-primary">Follow Us</h4>
             <div className="flex justify-center md:justify-start space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                <Instagram className="h-7 w-7" />
-              </a>
-              <a href="mailto:contact@jonnygringo.com" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                <Mail className="h-7 w-7" />
-              </a>
-              <a href="tel:+18187032203" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                <Phone className="h-7 w-7" />
+              <a href="https://www.instagram.com/jonnygringosalsa/" className="text-muted-foreground hover:text-primary transition-colors duration-200">
+                <Instagram className="h-7 w-7" /> @jonnygringosalsa
               </a>
             </div>
           </div>
