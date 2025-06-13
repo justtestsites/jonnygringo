@@ -125,6 +125,7 @@ const CartPage = ({ cart, onAddToCart, onRemoveFromCart }) => {
                     <span className="text-muted-foreground">Subtotal ({cartItemsDetails.length} {cartItemsDetails.length === 1 ? 'item' : 'items'})</span>
                     <span>${subtotal.toFixed(2)}</span>
                   </div>
+                  <p className="text-xs text-muted-foreground text-right mt-1">Tax will be added at checkout</p>
                 </div>
                 <div className="border-t border-primary/20 pt-6 mt-2 flex justify-between font-bold text-lg">
                   <span>Total</span>
