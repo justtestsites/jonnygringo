@@ -35,7 +35,7 @@ export default async function handler(req, res) {
       success_url: `${req.headers.origin}/success`,
       cancel_url: `${req.headers.origin}/salsaclub`,
     });
-    return res.status(200).json({ url: session.url });
+    return res.status(200).json({ sessionId: session.id });
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }

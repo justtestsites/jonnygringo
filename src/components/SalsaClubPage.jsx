@@ -5,6 +5,9 @@ import { Badge } from '@/components/ui/badge.jsx'
 import { Check, Clock, Package, Star, Truck, Flame, Calendar, UserCheck, ChevronDown } from 'lucide-react'
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion.jsx'
 import logo from '../assets/logo.png'
+import { loadStripe } from '@stripe/stripe-js'
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
 
 const SalsaClubPage = () => {
   const [selectedPlan, setSelectedPlan] = useState(null)
@@ -116,8 +119,9 @@ const SalsaClubPage = () => {
         body: JSON.stringify({ planId: plan.id }),
       });
       const data = await response.json();
-      if (data.url) {
-        window.location.href = data.url;
+      if (data.sessionId) {
+        const stripe = await stripePromise;
+        await stripe.redirectToCheckout({ sessionId: data.sessionId });
       } else {
         alert(data.error || 'Failed to start checkout.');
       }
