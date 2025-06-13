@@ -543,7 +543,7 @@ const Footer = () => {
             <h4 className="font-bold text-lg mb-4 text-primary">Follow Us</h4>
             <div className="flex justify-center md:justify-start space-x-4">
               <a href="https://www.instagram.com/jonnygringosalsa/" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                <Instagram className="h-7 w-7" /> @jonnygringosalsa
+                <Instagram className="h-7 w-7" />
               </a>
             </div>
           </div>
