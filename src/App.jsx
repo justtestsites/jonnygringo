@@ -6,6 +6,9 @@ import { Badge } from '@/components/ui/badge.jsx'
 import { ShoppingCart, Menu, X, Instagram, Mail, Phone, MapPin, ChevronLeft, ChevronRight } from 'lucide-react'
 import SalsaClubPage from './components/SalsaClubPage.jsx'
 import CartPage from './components/CartPage.jsx'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage.jsx'
+import TermsOfServicePage from './pages/TermsOfServicePage.jsx'
+import LegalInformationPage from './pages/LegalInformationPage.jsx'
 import './App.css'
 import logo from './assets/logo.png'
 import mildSalsaWebp from './assets/gallery/mild-salsa.webp'
@@ -509,62 +512,51 @@ const SalsaClubTeaser = () => {
 // Footer Component
 const Footer = () => {
   return (
-    <>
-      <div className="w-full border-t-2 border-gray-200" />
-      <footer className="bg-white text-black py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
-            <div>
-              <h3 className="text-2xl font-extrabold mb-4 text-primary">Jonny Gringo Salsa</h3>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                Premium crafted salsas made with authentic recipes and the finest ingredients.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="font-bold text-lg mb-4 text-primary">Quick Links</h4>
-              <ul className="space-y-3 text-base">
-                <li><Link to="/" className="text-muted-foreground hover:text-primary transition-colors duration-200">Home</Link></li>
-                <li><Link to="/salsaclub" className="text-muted-foreground hover:text-primary transition-colors duration-200">Salsa Club</Link></li>
-                <li><Link to="/about" className="text-muted-foreground hover:text-primary transition-colors duration-200">About Us</Link></li>
-                <li><Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors duration-200">Contact</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-bold text-lg mb-4 text-primary">Contact</h4>
-              <ul className="space-y-3 text-base">
-                <li className="flex items-center justify-center md:justify-start gap-3 text-muted-foreground">
-                  <Mail className="h-5 w-5 text-primary" />
-                  contact@jonnygringo.com
-                </li>
-                <li className="flex items-center justify-center md:justify-start gap-3 text-muted-foreground">
-                  <Phone className="h-5 w-5 text-primary" />
-                  (818) 703-2203
-                </li>
-                <li className="flex items-center justify-center md:justify-start gap-3 text-muted-foreground">
-                  <MapPin className="h-5 w-5 text-primary" />
-                  6263 Topanga Canyon Blvd, Woodland Hills, CA 91367
-                </li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-bold text-lg mb-4 text-primary">Follow Us</h4>
-              <div className="flex justify-center md:justify-start space-x-4">
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                  <Instagram className="h-7 w-7" />
-                </a>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-black/10 mt-12 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2025 Jonny Gringo Salsa. All rights reserved.</p>
+    <footer className="bg-primary text-primary-foreground py-10 px-4">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Company Info */}
+        <div>
+          <h3 className="text-2xl font-bold mb-4">Jonny Gringo Salsa</h3>
+          <p className="text-sm text-primary-foreground/80 mb-2">Handcrafted salsas made with passion.</p>
+          <div className="flex space-x-4 mt-4">
+            <a href="#" className="text-primary-foreground hover:text-secondary transition-colors">
+              <Instagram className="h-6 w-6" />
+            </a>
+            <a href="mailto:contact@jonnygringo.com" className="text-primary-foreground hover:text-secondary transition-colors">
+              <Mail className="h-6 w-6" />
+            </a>
+            <a href="tel:+18187032203" className="text-primary-foreground hover:text-secondary transition-colors">
+              <Phone className="h-6 w-6" />
+            </a>
           </div>
         </div>
-      </footer>
-    </>
+
+        {/* Quick Links */}
+        <div>
+          <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+          <ul className="space-y-2">
+            <li><Link to="/salsaclub" className="text-primary-foreground/80 hover:text-secondary transition-colors">Salsa Club</Link></li>
+            <li><Link to="/cart" className="text-primary-foreground/80 hover:text-secondary transition-colors">Cart</Link></li>
+            <li><Link to="/about" className="text-primary-foreground/80 hover:text-secondary transition-colors">About Us</Link></li>
+            <li><Link to="/contact" className="text-primary-foreground/80 hover:text-secondary transition-colors">Contact</Link></li>
+          </ul>
+        </div>
+
+        {/* Legal & Support */}
+        <div>
+          <h3 className="text-xl font-bold mb-4">Legal & Support</h3>
+          <ul className="space-y-2">
+            <li><Link to="/privacy-policy" className="text-primary-foreground/80 hover:text-secondary transition-colors">Privacy Policy</Link></li>
+            <li><Link to="/terms-of-service" className="text-primary-foreground/80 hover:text-secondary transition-colors">Terms of Service</Link></li>
+            <li><Link to="/legal-information" className="text-primary-foreground/80 hover:text-secondary transition-colors">Legal Information</Link></li>
+            {/* Add more links as needed */}
+          </ul>
+        </div>
+      </div>
+      <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-sm text-primary-foreground/60">
+        &copy; {new Date().getFullYear()} Jonny Gringo Salsa. All rights reserved.
+      </div>
+    </footer>
   )
 }
 
@@ -797,6 +789,9 @@ function App() {
             />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+            <Route path="/legal-information" element={<LegalInformationPage />} />
           </Routes>
         </main>
         <Footer />
