@@ -8,9 +8,6 @@ import SalsaClubPage from './components/SalsaClubPage.jsx'
 import CartPage from './components/CartPage.jsx'
 import './App.css'
 import logo from './assets/logo.png'
-import salsa1 from './assets/gallery/salsa1.jpg'
-import salsa2 from './assets/gallery/salsa2.jpg'
-import salsa3 from './assets/gallery/salsa3.jpg'
 import mildSalsaWebp from './assets/gallery/mild-salsa.webp'
 import spicySalsaWebp from './assets/gallery/spicy-salsa.webp'
 import Salsa1 from './assets/gallery/Salsa1.jpg'
@@ -420,9 +417,9 @@ const ProductsSection = React.forwardRef((props, ref) => {
           </h2>
           <p className="text-center text-lg text-gray-700 mb-8">Take a closer look at our handcrafted salsas, made with love and the finest ingredients</p>
           <div className="flex flex-col md:flex-row gap-8 justify-center items-stretch max-w-4xl mx-auto">
-            <img src={salsa1} alt="Salsa 1" className="rounded-xl shadow-lg object-cover w-full md:w-1/3 h-64 transition-transform duration-200 hover:scale-105 hover:shadow-2xl cursor-pointer" />
-            <img src={salsa2} alt="Salsa 2" className="rounded-xl shadow-lg object-cover w-full md:w-1/3 h-64 transition-transform duration-200 hover:scale-105 hover:shadow-2xl cursor-pointer" />
-            <img src={salsa3} alt="Salsa 3" className="rounded-xl shadow-lg object-cover w-full md:w-1/3 h-64 transition-transform duration-200 hover:scale-105 hover:shadow-2xl cursor-pointer" />
+            <img src={Salsa1} alt="Salsa 1" className="rounded-xl shadow-lg object-cover w-full md:w-1/3 h-64 transition-transform duration-200 hover:scale-105 hover:shadow-2xl cursor-pointer" />
+            <img src={Salsa2} alt="Salsa 2" className="rounded-xl shadow-lg object-cover w-full md:w-1/3 h-64 transition-transform duration-200 hover:scale-105 hover:shadow-2xl cursor-pointer" />
+            <img src={Salsa3} alt="Salsa 3" className="rounded-xl shadow-lg object-cover w-full md:w-1/3 h-64 transition-transform duration-200 hover:scale-105 hover:shadow-2xl cursor-pointer" />
           </div>
         </div>
 
