@@ -4,6 +4,9 @@ import { Button } from '@/components/ui/button.jsx';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card.jsx';
 import { products } from '../App.jsx'; // Assuming products array is exported from App.jsx
 import { Trash2, ShoppingCart } from 'lucide-react';
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 const CartPage = ({ cart, onAddToCart, onRemoveFromCart }) => {
   const navigate = useNavigate();
@@ -13,7 +16,7 @@ const CartPage = ({ cart, onAddToCart, onRemoveFromCart }) => {
     .map(productId => {
       const product = products.find(p => p.id === productId);
       if (product && cart[productId] > 0) {
-        return { ...product, quantity: cart[productId] };
+        return { id: product.id, quantity: cart[productId], price: product.price };
       }
       return null;
     })
@@ -26,6 +29,34 @@ const CartPage = ({ cart, onAddToCart, onRemoveFromCart }) => {
   // For demo, flat shipping (could be dynamic)
   const shipping = cartItemsDetails.length > 0 ? 10 : 0;
   const total = subtotal + shipping;
+
+  const handleCheckout = async () => {
+    if (cartItemsDetails.length === 0) {
+      alert("Your cart is empty. Please add items before checking out.");
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ cartItems: cartItemsDetails }),
+      });
+      const data = await response.json();
+
+      if (data.sessionId) {
+        const stripe = await stripePromise;
+        await stripe.redirectToCheckout({ sessionId: data.sessionId });
+      } else {
+        alert(data.error || 'Failed to start checkout.');
+      }
+    } catch (error) {
+      console.error('Checkout error:', error);
+      alert('Error connecting to payment gateway.');
+    }
+  };
 
   return (
     <div className="max-w-5xl mx-auto py-12 px-4">
@@ -99,11 +130,14 @@ const CartPage = ({ cart, onAddToCart, onRemoveFromCart }) => {
                 </div>
                 <div className="border-t border-primary/20 pt-6 mt-2 flex justify-between font-bold text-lg">
                   <span>Total</span>
-                  <span>${subtotal.toFixed(2)}</span>
+                  <span>${total.toFixed(2)}</span>
                 </div>
               </CardContent>
               <CardFooter className="pt-6 pb-4">
-                <Button className="w-full jonny-button-primary gap-2 text-lg py-3">
+                <Button
+                  className="w-full jonny-button-primary gap-2 text-lg py-3"
+                  onClick={handleCheckout}
+                >
                   Checkout
                 </Button>
               </CardFooter>
