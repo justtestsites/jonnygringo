@@ -179,12 +179,12 @@ const SalsaClubPage = () => {
   ]
 
   const priceIdMap = {
-    'mix-match-biweekly': process.env.STRIPE_PRICE_ID_MIX_MATCH_BIWEEKLY,
-    'mild-spicy-monthly': process.env.STRIPE_PRICE_ID_MILD_SPICY_MONTHLY,
-    'mild-2-biweekly': process.env.STRIPE_PRICE_ID_MILD_2_BIWEEKLY,
-    'spicy-2-biweekly': process.env.STRIPE_PRICE_ID_SPICY_2_BIWEEKLY,
-    'mild-2-monthly': process.env.STRIPE_PRICE_ID_MILD_2_MONTHLY,
-    'spicy-2-monthly': process.env.STRIPE_PRICE_ID_SPICY_2_MONTHLY,
+    'mix-match-biweekly': import.meta.env.VITE_STRIPE_PRICE_ID_MIX_MATCH_BIWEEKLY,
+    'mild-spicy-monthly': import.meta.env.VITE_STRIPE_PRICE_ID_MILD_SPICY_MONTHLY,
+    'mild-2-biweekly': import.meta.env.VITE_STRIPE_PRICE_ID_MILD_2_BIWEEKLY,
+    'spicy-2-biweekly': import.meta.env.VITE_STRIPE_PRICE_ID_SPICY_2_BIWEEKLY,
+    'mild-2-monthly': import.meta.env.VITE_STRIPE_PRICE_ID_MILD_2_MONTHLY,
+    'spicy-2-monthly': import.meta.env.VITE_STRIPE_PRICE_ID_SPICY_2_MONTHLY,
   };
 
   return (
